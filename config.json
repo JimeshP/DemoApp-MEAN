@@ -1,13 +1,13 @@
 {
   "app_port": "3001",
   "mongodb": {
-    "host": "localhost",
+    "host": "192.168.111.113",
     "port": 27017,
 	"db": "DemoApp"
   },
   "activemq":{
     "port": 61613,
-    "host": "localhost",
+    "host": "192.168.111.120",
     "debug": "false",
     "login": "admin",
     "passcode": "admin",

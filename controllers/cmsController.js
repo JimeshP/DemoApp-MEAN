@@ -1,8 +1,12 @@
-var CMSController={
+var schemaController = require('./../controllers/schemaController.js');
+var schemas = schemaController.getSchemas();
+var app_user = schemas[0];
+var customer = schemas[1];
+var address = schemas[2];
+
+var CMSController={ 
  validateUser: function(req,res){
 	console.log("user :"+req.params.username);
-	var db = req.db;
-	var app_user = db.get("app_user");
 	app_user.findOne({"userName":req.params.username},{}, function (err, result) {
 		if (result) {
 			console.log("User Validated Successfully!!")
@@ -14,8 +18,6 @@ var CMSController={
 	});
 },
  getUserList: function(req,res){
-	var db = req.db;
-	var app_user = db.get("app_user");
 	app_user.find({}, function (err, result) {
 		if (result) {
 			console.log("UserList retrieved successfully!!")
@@ -27,8 +29,6 @@ var CMSController={
 	});
 },
  getCustomerList: function(req,res){
-	var db = req.db;
-	var customer = db.get("customer");
 	customer.find({}, function (err, result) {
 		if (result) {
 			console.log("CustomerList retrieved successfully!!")
@@ -40,8 +40,6 @@ var CMSController={
 	});
 },
 getCustomerAddress: function(req,res){
-	var db = req.db;
-	var address = db.get("address");
 	address.findOne({"customerId": parseInt(req.params.cid)},{}, function (err, result) {
 		if (result) {
 			console.log("CustomerAddress retrieved successfully!!")

@@ -1,8 +1,9 @@
 var mqController = require('../controllers/mqController.js');
+var schemaController = require('./../controllers/schemaController.js');
+var orders = schemaController.getSchemas()[3];
+var customer = schemaController.getSchemas()[1];
 var OMSController ={
 getOrderDetails: function(req,res){
-	var db = req.db;
-	var orders = db.get("orders");
 	orders.find({}, function (err, result) {
 		if (result) {
 			console.log("Order list retrieved successfully!!")			
@@ -14,23 +15,19 @@ getOrderDetails: function(req,res){
 	});
 },
 setOrderDetails: function(req,res){
-	var db = req.db;
 	var value = req.Random.integer(1, 100);
 	var DateTime = req.pDate.create().now();
-	var orders = db.get("orders");
-	db.get("customer").findOne({"customerId": parseInt(req.body.customerId)},{}, function (err, result) {
+	customer.findOne({"customerId": parseInt(req.body.customerId)},{}, function (err, result) {
 		if (result) {
-		    orders.insert([
-				{ "errorCode": null,
-				  "message": null,
-				  "status": null,
-				  "orderId": DateTime, 
+			var newOrder = new  orders({ 
+			      "orderId": DateTime, 
 				  "customerId": parseInt(req.body.customerId),
 				  "customerName": result.customerFirstName+' '+result.customerLastName, 
 				  "statusId": parseInt(req.body.statusId) ,
 				  "orderDate": DateTime, 
 				  "orderLineBVOList": req.body.orderLineBVOList
-				}], function (err1, result1) {
+				});
+		    newOrder.save(function (err1, result1) {
 				  if (err1) {
 					console.log(err1);
 				  } else {
@@ -56,8 +53,6 @@ setOrderDetails: function(req,res){
 	
 },
 getCustomerOrderDetails: function(req,res){
-	var db = req.db;
-	var orders = db.get("orders");
 orders.find({"customerId":parseInt(req.params.id)},{}, function (err, result) {
 		if (result) {
 			console.log("Customer Order list retrieved successfully!!");

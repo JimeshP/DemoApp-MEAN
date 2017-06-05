@@ -12,9 +12,9 @@
     "debug": "~2.2.0",
     "jade": "~1.11.0",
     "morgan": "~1.6.1",
+	"mongoose": "^4.10.4",
     "serve-favicon": "~2.3.0",
 	"mongodb": "^1.4.4",
-    "monk": "^1.0.1",
 	"random-js": "^1.0.0",
 	"node-datetime": "^1.0.0",
 	"stomp": "^0.1.1"

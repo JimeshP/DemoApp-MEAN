@@ -1,7 +1,7 @@
 db.customer.insert({"customerId": 59,"customerStatus": "active","customerFirstName": "VMware","customerLastName": "Inc","address": null,"user": null});
 db.customer.insert({"customerId": 67,"customerStatus": "active","customerFirstName": "Interra","customerLastName": "Tech","address": null,"user": null});
-db.app_user.insert({"userId": 23,"userName": "vmware","password": "vmware","customerId": 59});
-db.app_user.insert({"userId": 31,"userName": "interra","password": "interra","customerId": 67});
+db.app_user.insert({"userId": 23,"userName": "vmware","Password": "vmware","customerId": 59});
+db.app_user.insert({"userId": 31,"userName": "interra","Password": "interra","customerId": 67});
 db.address.insert({"addressId": 21,"customerId": 59,"addressFirstLine": "3401 Hillview Ave","addressSecondLine": "Palo Alto","city": "Palo Alto","state": "California","country": "USA","zipCode": "94304"});
 db.address.insert({"addressId": 29,"customerId": 67,"addressFirstLine": "25 Metro Dr","addressSecondLine": "500","city": "San Jose","state": "California","country": "USA","zipCode": "95110"});
 db.products.insert({"productId": 6,"productName": "Skateboard 1","productPriceBVOList": [{"productPriceId": 11,"pricePerUnit": 20,"productPRODID": null}]});

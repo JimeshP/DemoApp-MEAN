@@ -9,10 +9,15 @@ var Random = require("random-js");
 var datetime = require('node-datetime');
 var routes = require('./routes/index');
 var mongodb = require('mongodb');
-var monk = require('monk');
+var mongoose = require('mongoose');
 var config = require('./config.json');
-var db = monk('mongodb://'+config.mongodb.host+':'+config.mongodb.port+'/'+config.mongodb.db);
-console.log("Using "+config.mongodb.host+":"+config.mongodb.port + " to connect to Mongo DB.");
+mongoose.connect(config.mongodb.host+':'+config.mongodb.port+'/'+config.mongodb.db);
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+db.once('open', function() {
+  console.log("Connected to MongoDB!!");
+  console.log("Using "+config.mongodb.host+":"+config.mongodb.port + " to connect to Mongo DB.");
+});
 var mqController = require('./controllers/mqController.js');
 mqController.init();
 var random = new Random(Random.engines.mt19937().autoSeed());
@@ -20,7 +25,6 @@ app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-  req.db = db;
   req.pDate = datetime;
   req.Random = random;
   next();
@@ -67,5 +71,4 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
-
 module.exports = app;
