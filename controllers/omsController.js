@@ -30,6 +30,7 @@ setOrderDetails: function(req,res){
 		    newOrder.save(function (err1, result1) {
 				  if (err1) {
 					console.log(err1);
+					res.send(err1);
 				  } else {
 					mqController.sendMessage(DateTime);
 					console.log('Order Placed Successfully!!!');

@@ -35,6 +35,10 @@ router.get('/ossb-oms-service/oms/api/orderservice/customer/:id', function(req ,
 	console.log("Retrieving Customer Order Details..");
 	omsController.getCustomerOrderDetails(req,res)
 });
+router.put('/ossb-cms-service/cms/api/customerservice', function(req ,res, next){
+	console.log("Saving Customer Details..");
+	cmsController.saveCustomerDetails(req,res)
+});
 router.put('/ossb-oms-service/oms/api/orderservice/', function(req ,res, next){
 	console.log("Setting Order Details..");
 	omsController.setOrderDetails(req,res)

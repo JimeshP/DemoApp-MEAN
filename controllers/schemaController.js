@@ -18,8 +18,8 @@ var Schema_Controller ={
 	 customerStatus: String,
 	 customerFirstName: String,
 	 customerLastName: String,
-	 address: String,
-	 user: String
+	 address: mongoose.Schema.Types.Mixed,
+	 user: mongoose.Schema.Types.Mixed
 	 },{ collection : 'customer' });
     var customers = mongoose.model('customer',customer_Schema); 
 	return customers;

@@ -46,9 +46,66 @@ getCustomerAddress: function(req,res){
 			res.send({"errorCode": null,"errorDesc": null,"status": "success","addresslist":[result]});
 		} else {
 			console.log("Error Retrieving Data!!")
-			res.send({"errorCode": null,"errorDesc": null,"status": "success","addresslist": null});
+			res.send({"errorCode": null,"errorDesc": null,"status": null,"addresslist": null});
 		}
 	});
+},
+saveCustomerDetails: function(req,res){
+	var value = 100000 + parseInt(req.Random.integer(1, 100));
+	var DateTime = req.pDate.create().now();
+	var ID = Math.floor(parseInt(DateTime)/parseInt(value));
+	var new_customer = new customer({
+	 "customerId": parseInt(ID),
+	 "customerStatus": req.body.customerStatus,
+	 "customerFirstName": req.body.customerFirstName,
+	 "customerLastName": req.body.customerLastName,
+	 "address": req.body.address,
+	 "user": req.body.user.userName
+	 });
+	 var new_address = new address({
+	 "addressId": parseInt(ID),
+	 "customerId": parseInt(ID),
+	 "addressFirstLine": req.body.address.addressFirstLine,
+	 "addressSecondLine": req.body.address.addressSecondLine,
+	 "city": req.body.address.city,
+	 "state": req.body.address.state,
+	 "country": req.body.address.country,
+	 "zipCode": req.body.address.zipCode
+	 });
+	 var new_app_user = new app_user({
+	 "userId" : parseInt(ID), 
+	 "userName" : req.body.user.userName, 
+	 "Password" : req.body.user.Password, 
+	 "customerId" : parseInt(ID)
+	 });
+	 new_customer.save(function (err1, result1) {
+		if (err1) {
+			console.log("Error Saving Customer Details!!");
+			res.send({"errorCode": null,"errorDesc": null,"status": null});
+		} 
+		else {
+			new_address.save(function (err2, result2) {
+				if (err2) {
+					console.log("Error Saving Address Details!!");
+					res.send({"errorCode": null,"errorDesc": null,"status": null});
+				} 
+				else {
+					console.log('Address Saved Successfully!!!');
+				}
+			 });
+			 new_app_user.save(function (err3, result3) {
+				if (err3) {
+					console.log("Error Saving New User Details!!");
+					res.send({"errorCode": null,"errorDesc": null,"status": null});
+				} 
+				else {
+					console.log('New User Created Successfully!!!');
+				}
+			 });
+			console.log('Customer Details Saved Successfully!!!');
+			res.send({"errorCode": null,"errorDesc": null,"status": "success","CustomerID":result1.customerId});
+		}
+	 });
 }
 };
 module.exports = CMSController;
