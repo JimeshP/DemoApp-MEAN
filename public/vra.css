@@ -81,9 +81,9 @@
     padding: 18px;
 }
 .login-block-header {
-    background-image: url("images/login_page_logo.png");
+    background-image: url("images/logo.png");
     background-repeat: no-repeat;
-    height: 22px;
+    height: 50px;
     margin-left: 80px;
     margin-top: 25px;
 }

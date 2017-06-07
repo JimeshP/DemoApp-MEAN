@@ -23,9 +23,10 @@ html {
 .register_block_button {
     background-image: url("images/register_btn.png");
     background-repeat: no-repeat;
-    background-size: 324px 42px;
+    background-size: 293px 42px;
+	margin: auto;
     cursor: pointer;
-    height: 46px;
+    height: 40px;
     width: 100%;
 }
 
@@ -39,10 +40,11 @@ html {
 
 .register-block{
     #background: #fff none repeat scroll 0 0;
-    border-radius: 0 0 5px 5px;
+    border-radius: 10px 10px 10px 10px;
     margin: auto;
     padding: 20px;
-    width: 320px;
+	width: 295px;
+	height: 438px;
 }
 
 .register-body h1 {
@@ -51,14 +53,14 @@ html {
     font-size: 16px;
     font-family: proxima-nova, sans-serif;
     font-weight: normal;
-    text-transform: ;
+    margin-left: 43px;
     margin-top: 10px;
     margin-bottom: 0px;
 }
 
 .register-block h2 {
     text-align: left;
-    font-size: 16px;
+    font-size: 18px;
     font-family: proxima-nova, sans-serif;
     font-weight: normal;
     text-transform: ;
@@ -69,7 +71,7 @@ html {
 .register-block h4 {
     text-align: left;
     color: #0d7ab3;
-    font-size: 12px;
+    font-size: 14px;
     font-family: proxima-nova, sans-serif;
     font-weight: normal;
     text-transform: ;
@@ -99,7 +101,7 @@ html {
     color: #ffffff;
     font-family: proxima-nova;
     font-size: 15px;
-    height: 20px;
+    height: 30px;
     margin-bottom: 10px;
     outline: medium none;
     padding: 0 20px 0 50px;
@@ -114,11 +116,11 @@ display: inline-block;
     color: #ffffff;
     font-family: proxima-nova;
     font-size: 15px;
-    height: 20px;
+    height: 30px;
     margin-bottom: 10px;
     outline: medium none;
     padding: 0 20px 0 10px;
-	width:150px;
+	width:262px;
 	
 }
 
@@ -134,7 +136,7 @@ display: inline-block;
     background-repeat: no-repeat;
     float: left;
     height: 91px;
-    margin-left: 300px;
+    margin-left: 269px;
     margin-top: 82px;
     width: 80px;
 }
@@ -152,6 +154,7 @@ display: inline-block;
     background-position: center center;
     background-repeat: no-repeat;
     height: 50px;
+	margin-left: 43px;
 }
 
 
@@ -159,31 +162,31 @@ display: inline-block;
    background: #93918b url("images/login_icon.png") no-repeat scroll 19px center / 16px 18px;
 }
 .register-block  input#firstname {
-    width: 117px;
+    width: 128.5px;
 	   padding: 0 20px 0 10px;
 }
 
 .register-block  input#lastname {
-    width: 117px;
+    width: 128.5px;
 	   padding: 0 20px 0 10px;
 }
 
 .register-block  input#city {
-    width: 117px;
+    width: 128.5px;
 	   padding: 0 20px 0 10px;
 }
 
 .register-block  input#zipcode{
-    width: 117px;
+    width: 128.5px;
 	   padding: 0 20px 0 10px;
 }
 .register-block  input#addressfirstline{
-		width: 250px;
+		width: 262px;
 	   padding: 0 20px 0 10px;
 }
 
 .register-block  input#addresssecondline{
-    	width: 250px;
+    	width: 262px;
 	   padding: 0 20px 0 10px;
 }
 .register-block  input{
